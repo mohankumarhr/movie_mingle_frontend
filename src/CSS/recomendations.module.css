@@ -1,0 +1,9 @@
+.recomendContainer{
+    margin: 5rem;
+}
+
+.recomendWrapper{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+}

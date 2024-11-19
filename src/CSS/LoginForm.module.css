@@ -1,0 +1,45 @@
+.LoginFormContainer{
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 30px 50px;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+.LoginFormContainer h3{
+    align-self: center;
+    font-weight: 700;
+    font-size: 25px;
+}
+
+.LoginFormContainer label{
+    padding-top: 20px;
+}
+
+.LoginFormContainer input{
+    padding:  5px 10px;
+    outline: none;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 250px;
+    font-size: 15px;
+}
+
+.LoginFormContainer button{
+    background-color: #df8e1a;
+    padding: 5px 10px;
+    font-size: 18px;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    border: none;
+    margin-top: 20px;
+    transition: all 0.3s ease-in-out;
+}
+
+.LoginFormContainer button:hover{
+    transform: scale(1.05);
+}

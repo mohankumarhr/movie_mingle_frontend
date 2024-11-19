@@ -1,0 +1,14 @@
+.RecomendBtnContainer{
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    margin: 30px;
+}
+
+.RecomendBtnContainer a{
+    padding: 10px 20px;
+    background-color: #df8e1a;
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+}

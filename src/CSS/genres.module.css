@@ -1,0 +1,32 @@
+.genresContainer{
+    padding: 50px;
+}
+
+.genresContainer h3{
+    text-align: center;
+    margin-bottom: 50px;
+    font-size: 30px;
+}
+
+.genresWrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.genresWrapper button{
+    padding: 8px 25px;
+    background-color: white;
+    border-radius: 50px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+
+#selectedGenres{
+    background-color: #df8e1a;
+    color: white;
+}

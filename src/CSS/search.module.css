@@ -1,0 +1,28 @@
+.searchContainer{
+    background-color: #f2e3ce;
+    padding: 2rem;
+}
+
+.searchWrapper{
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+}
+.searchWrapper input{
+    padding: 10px 20px;
+    width: 50%;
+    outline: none;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    
+}
+
+.searchWrapper button{
+    padding: 10px 50px;
+    font-size: 14px;
+    border: none;
+    background-color: #df8e1a;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+}

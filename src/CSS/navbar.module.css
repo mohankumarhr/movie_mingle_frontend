@@ -1,0 +1,68 @@
+.navbarContainer{
+    margin: 30px 50px;
+}
+
+.navbarWrapper{
+    display: flex;
+    gap: 50px;
+}
+
+.navbarWrapper .navbarLogo span{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.navbarWrapper .navbarMenu{
+    margin-right: auto;
+}
+
+.navbarWrapper .navbarMenu ul{
+    display: flex;
+    gap: 20px;
+    list-style: none;
+}
+
+.navbarWrapper .navbarMenu ul li{
+    text-decoration: none;
+    cursor: pointer;
+    position: relative;
+}
+
+.navbarWrapper .navbarMenu ul li a{
+    text-decoration: none;
+    color: black;
+}
+
+.navbarWrapper .navbarMenu ul li::after{
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0px;
+    border-bottom: 3px solid #df8e1a;
+    transition: all 0.2s ease-in-out;
+}
+
+.navbarWrapper .navbarMenu ul li:hover::after{
+    width: 100%;
+}
+
+
+.navbarWrapper .navbarButtons a{
+    padding: 8px 25px;
+    margin-right: 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    background-color: #df8e1a;
+    color: white;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    transition: all 0.2s ease-in-out;
+}
+
+.navbarWrapper #loginButton{
+    background-color: white;
+    color: black;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}

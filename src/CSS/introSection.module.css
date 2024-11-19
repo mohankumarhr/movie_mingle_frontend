@@ -1,0 +1,36 @@
+.introContainer{
+    background-color: #f2e3ce;
+    padding: 50px;
+    border-radius: 25px;
+}
+
+.introWrapper{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.introWrapper .IntroLeftSection{
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+}
+
+.introWrapper .IntroLeftSection p{
+    font-size: 50px;
+    font-weight: 600;
+}
+
+.introWrapper .IntroLeftSection a{
+    background-color: #df8e1a;
+    text-decoration: none;
+    font-size: 18px;
+    color: white;
+    padding: 10px 70px;
+    width: fit-content;
+    border-radius: 20px;
+}
+
+.introWrapper .IntroRightSection img{
+    width: 500px;
+}

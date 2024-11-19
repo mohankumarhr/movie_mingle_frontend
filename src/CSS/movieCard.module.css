@@ -1,0 +1,25 @@
+.moviecardContainer{
+    border-radius: 10px;
+    min-width: 200px;
+    cursor: pointer;
+}
+
+.moviecardWrapper{
+    display: flex;
+    flex-direction: column;
+}
+
+.moviecardWrapper .imageConatiner img{
+    border-radius: 10px;
+}
+
+.moviecardWrapper .cardTitle p{
+    font-size: 18px;
+    font-weight: bold;
+    overflow-wrap: break-word;
+    max-width: 300px;
+}
+
+.moviecardWrapper .cardTitle p:hover{
+    color: #df8e1a;
+}
