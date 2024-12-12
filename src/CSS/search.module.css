@@ -26,3 +26,18 @@
     border-radius: 10px;
     cursor: pointer;
 }
+
+@media (max-width: 768px){
+    .searchContainer{
+        padding: 1rem;
+    }
+    .searchWrapper{
+        gap: 25px;
+    }
+    .searchWrapper input{
+        width: 60%;
+    }
+    .searchWrapper button{
+        padding: 10px 30px;
+    }
+}

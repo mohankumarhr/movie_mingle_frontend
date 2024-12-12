@@ -6,3 +6,8 @@
     flex-wrap: wrap;
     gap: 20px;
 }
+@media (max-width: 768px){
+    .addMovieContainer{
+        margin: 20px;
+    }
+}

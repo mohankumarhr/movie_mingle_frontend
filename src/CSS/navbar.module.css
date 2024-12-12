@@ -1,10 +1,11 @@
 .navbarContainer{
-    margin: 30px 50px;
+    margin: 1.5rem 1.5rem;
 }
 
 .navbarWrapper{
     display: flex;
-    gap: 50px;
+    align-items: center;
+    gap: 2rem;
 }
 
 .navbarWrapper .navbarLogo span{
@@ -47,6 +48,32 @@
     width: 100%;
 }
 
+.navbarWrapper .navbarAvatar{
+    cursor: pointer;
+    position: relative;
+    margin-left: auto;
+}
+
+.navbarAvatar .avatarDropdown{
+    width: 100px;
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    position: absolute;
+    top: 42px;
+    right: 0;
+    display: none;
+}
+
+.navbarAvatar:hover .avatarDropdown{
+    display: block;
+}
+
+.navbarAvatar .avatarDropdown li{
+    list-style: none;
+    text-decoration: none;
+    width: fit-content;
+}
 
 .navbarWrapper .navbarButtons a{
     padding: 8px 25px;
@@ -65,4 +92,63 @@
     background-color: white;
     color: black;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+
+.navbarWrapper .menuIcon{
+    display: none;
+}
+
+@media (max-width: 768px){
+
+    .navbarWrapper .menuIcon{
+        display: flex;
+    }
+
+    #signupbtn{
+        display: none;
+    }
+
+    #loginButton{
+        display: block;
+        width: max-content;
+        margin-left: 20px;
+        margin-right: 0;
+    }
+
+    .navbarButtons{
+        margin-left: auto;
+        margin-right: 20px;
+    }
+
+    .navbarWrapper .navbarMenu{
+        background-color: rgb(255, 255, 255);
+        height: 100vh;
+        width: 50vw;
+        text-wrap: wrap;
+        position: absolute;
+        top: 0;
+        left: -50vw;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .navbarWrapper .navbarMenu ul{
+        padding: 20px;
+    }
+
+    .navbarWrapper .navbarMenu ul li{
+        font-size: 20px;
+    }
+
+    .navbarWrapper .displayMenu{
+        left: 0;
+    }
+
+    .navbarWrapper .navbarMenu ul{
+        flex-direction: column;
+    }
+
+    .navbarWrapper .navbarLogo span{
+        display: block;
+        width: max-content;
+    }
 }

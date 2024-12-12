@@ -1,0 +1,21 @@
+.emailVerifyContainer{
+    display: flex;
+    justify-content: center;
+}
+
+.emailVerifyWrapper{
+    width: fit-content;
+    background-color: #df8e1a;
+    box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+    color: white;
+    margin-top: 50px;
+    padding: 20px 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* .emailVerifyWrapper a{
+    color: blue;
+} */

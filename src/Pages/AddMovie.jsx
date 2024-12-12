@@ -4,8 +4,17 @@ import SearchSection from '../Components/SearchSection'
 import axios from 'axios'
 import MovieCard from '../Components/MovieCard'
 import styles from '../CSS/addMovies.module.css'
+import Cookies from 'js-cookie';
+import Login from './Login'
+import { toast } from 'react-toastify'
+import { base_url } from '../data'
 
 function AddMovie() {
+
+
+  const [token] = useState(Cookies.get('token') || "")
+
+  const [username, setUsername] = useState(null);
 
   const [serchText, setSearchText] = useState("")
 
@@ -22,7 +31,7 @@ function AddMovie() {
       params: {query: serchText, include_adult: 'false', language: 'en-US', page: '1'},
       headers: {
         accept: 'application/json',
-        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiYjQ4NTcyYWUzOTUxODBlOTdlN2JhODFkNzZmODAwNiIsIm5iZiI6MTczMTk5NzQ1OS4xOTIzMTU4LCJzdWIiOiI2NThhZTZhNjRkYTNkNDY2NDQ0MTJhNGUiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.3RAf8ycJ00SRTGbSo3mNIT91yE1ZdlusVTs8whmp-dM'
+        Authorization: process.env.REACT_APP_AUTHORIZATION_KEY
       }
     };
     
@@ -35,11 +44,51 @@ function AddMovie() {
       .catch(err => console.error(err));
     
   }, [serchText])
+
+
+  useEffect(()=>{
+    console.log(token)
+    axios.get(base_url+'/getuser',{
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    })
+    .then(response => (setUsername(response.data.username)))
+    .catch(error => console.error(error));
+  },[token])
   
 
+ 
   const handleClick = (item)=>{
+
+    const movieDetails = {
+      tmdb_id: item.id,
+      title: item.title,
+      url: item.poster_path
+    }
     console.log(item)
+    console.log(username)
+    console.log(token)
+    axios.post(base_url+'/addmovie',movieDetails,{
+      headers: {
+        Authorization: `Bearer ${token}`
+      },
+      params: {
+        username: username
+      }
+    })
+    .then(response =>{ console.log(response)
+      toast.success("Movie added")
+    })
+    .catch(error => {console.error(error)
+      toast.error("Movie already present")
+    });
+    
   }
+
+  if (!token) {
+     return <Login />
+  }  
 
   return (
     <div>

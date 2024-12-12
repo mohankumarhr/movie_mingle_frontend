@@ -30,3 +30,22 @@
     background-color: #df8e1a;
     color: white;
 }
+
+@media (max-width: 768px) {
+    .genresContainer{
+        padding: 20px;
+    }
+    .genresContainer h3{
+        margin-bottom: 20px;
+    }
+
+    .genresWrapper button{
+        padding: 5px 10px;
+        font-size: 12px;
+    }
+
+    .genresWrapper{
+        justify-content: flex-start;
+        gap: 15px;
+    }
+}

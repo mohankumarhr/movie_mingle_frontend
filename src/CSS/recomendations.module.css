@@ -7,3 +7,12 @@
     flex-wrap: wrap;
     gap: 40px;
 }
+
+@media (max-width: 768px){
+    .recomendContainer{
+        margin: 20px;
+    }
+    .recomendWrapper{
+        gap: 20px;
+    }
+}

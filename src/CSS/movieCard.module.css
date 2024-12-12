@@ -1,6 +1,5 @@
 .moviecardContainer{
     border-radius: 10px;
-    min-width: 200px;
     cursor: pointer;
 }
 
@@ -22,4 +21,16 @@
 
 .moviecardWrapper .cardTitle p:hover{
     color: #df8e1a;
+}
+
+@media (max-width: 768px){
+    .moviecardWrapper .imageConatiner img{
+        width: 156px;
+    }
+    .moviecardWrapper .cardTitle p{
+        font-size: 15px;
+    }
+    .moviecardWrapper{
+        width: min-content;
+    }
 }

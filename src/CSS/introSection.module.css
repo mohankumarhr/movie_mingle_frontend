@@ -6,6 +6,7 @@
 
 .introWrapper{
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
 }
@@ -17,7 +18,7 @@
 }
 
 .introWrapper .IntroLeftSection p{
-    font-size: 50px;
+    font-size: 3rem;
     font-weight: 600;
 }
 
@@ -33,4 +34,28 @@
 
 .introWrapper .IntroRightSection img{
     width: 500px;
+}
+
+@media (max-width: 768px){
+
+    .introContainer{
+        padding: 21px;
+    }
+
+    .introWrapper .IntroLeftSection{
+        gap: 20px;
+    }
+
+    .introWrapper{
+        flex-direction: column-reverse;
+    }
+
+    .introWrapper .IntroLeftSection p{
+        font-size: 20px;
+        text-align: center;
+    }
+
+    .introWrapper .IntroRightSection img{
+        width: 250px;
+    }
 }

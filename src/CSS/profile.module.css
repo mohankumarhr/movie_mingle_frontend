@@ -1,0 +1,89 @@
+.profileWrapper{
+    display: flex;
+    flex-direction: column;
+    padding: 3rem;
+    gap: 20px;
+}
+
+.profileWrapper h2{
+    font-size: 35px;
+}
+
+.profileWrapper .personalDetails{
+    display: flex;
+    flex-direction: column;
+}
+
+.personalDetails .personalDetailsEdit{
+    display: flex;
+    gap: 10px;
+}
+
+.personalDetails .personalDetailsEdit p{
+    font-weight: bold;
+}
+
+.personalDetails .personalDetailsEdit button{
+    font-size: 15px;
+    background-color: white;
+    border: none;
+    color: #df8e1a;  
+    cursor: pointer;
+    text-decoration: underline;
+    display: none;
+}
+
+.personalDetails .userDetails{
+    display: flex;
+    gap: 30px;
+    padding-top: 20px;
+    flex-wrap: wrap;
+}
+
+.personalDetails .userDetails input{
+    padding: 10px 20px;
+    font-size: 15px;
+    width: 300px;
+    border: 1px solid #ccc;
+    outline: none;
+}
+
+.personalDetails .userDetails .inputDisabled{
+    background-color: #ece9e9;
+}
+
+.personalDetails .userDetails button{
+    padding: 0 20px;
+    font-size: 20px;
+    background-color: #df8e1a;
+    border: none;
+    color: white;
+    cursor: pointer;
+    display: none;
+}
+
+.addedMovieWrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 0 3rem;
+}
+
+.addMovieList{
+    display: flex;
+    flex-direction: column;
+}
+
+.addMovieList td{
+    padding-right: 30px;
+}
+
+.addMovieList a{
+    color: #df8e1a;
+}
+
+.addMovieList span{
+    cursor: pointer;
+    color: #df8e1a;
+    text-decoration: underline;
+}
