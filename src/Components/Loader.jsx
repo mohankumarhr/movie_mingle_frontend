@@ -6,7 +6,7 @@ function Loader() {
   return (
     <div className={styles.loaderContainer}>
         <div className={styles.loaderWrapper}>
-            <img src={loader}></img>
+            <img src={loader} alt=''></img>
         </div>
     </div>
   )
