@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 function RecomendBtn() {
   return (
     <div className={styles.RecomendBtnContainer}>
-        <Link to={"/recomend"}>Recomend</Link>
+        <Link to={"/recomend"}>Recommend</Link>
     </div>
   )
 }

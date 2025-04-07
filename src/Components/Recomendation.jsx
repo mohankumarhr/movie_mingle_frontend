@@ -3,8 +3,13 @@ import styles from '../CSS/recomendations.module.css'
 import MovieCard from './MovieCard'
 import axios from 'axios'
 import { base_url } from '../data'
+import { useNavigate } from 'react-router-dom'
+import NoMoviePoster from '../assets/images/NoMoviePoster.png'
+
 
 function Recomendation() {
+
+  const navigate = useNavigate();
 
   const [movieDetails, setMovieDetails] = useState([])
 
@@ -31,7 +36,7 @@ function Recomendation() {
   // ]   
 
   const handleClick = (item)=>{
-    console.log("in side recomendation",item)
+    navigate(`/moviedetails/0/${item.tmdb}/${item.username}`)  
   }
 
 
@@ -40,7 +45,7 @@ function Recomendation() {
         <div className={styles.recomendWrapper}>
            {movieDetails.map((item)=>{
            return <MovieCard 
-            url={"https://image.tmdb.org/t/p/w300/"+item.url}
+            url={item.url != null? `https://image.tmdb.org/t/p/w300/${item.url}`:NoMoviePoster}
             title = {item.title}
             handleClick = {handleClick}
             details = {item}

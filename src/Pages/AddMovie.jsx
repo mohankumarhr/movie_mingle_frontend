@@ -8,9 +8,12 @@ import Cookies from 'js-cookie';
 import Login from './Login'
 import { toast } from 'react-toastify'
 import { base_url } from '../data'
+import Loader from '../Components/Loader'
+import NoMoviePoster from '../assets/images/NoMoviePoster.png'
 
 function AddMovie() {
 
+  const [loader, setLoader] = useState(false)
 
   const [token] = useState(Cookies.get('token') || "")
 
@@ -25,6 +28,7 @@ function AddMovie() {
   }
 
   useEffect(() => {
+    setLoader(true)
     const options = {
       method: 'GET',
       url: 'https://api.themoviedb.org/3/search/movie',
@@ -38,10 +42,11 @@ function AddMovie() {
     axios
       .request(options)
       .then((res)=>{
+        setLoader(false)
         return (setSearchResult(res.data.results),
         console.log(res.data) )
       })
-      .catch(err => console.error(err));
+      .catch(err => {console.error(err); setLoader(false)});
     
   }, [serchText])
 
@@ -100,7 +105,7 @@ function AddMovie() {
        {searchResult.map((item)=>{
           return <MovieCard 
           title = {item.title}
-          url = {item.poster_path != null? `https://image.tmdb.org/t/p/w300${item.poster_path}`:"https://image.tmdb.org/t/p/w300/43ZvmTzIJ0tTzgLG8sDOfg9roLF.jpg"}
+          url = {item.poster_path != null? `https://image.tmdb.org/t/p/w300${item.poster_path}`:NoMoviePoster}
           handleClick = {handleClick}
           details = {item}
           />
@@ -108,6 +113,7 @@ function AddMovie() {
        }
       </div>}
       {searchResult.length === 0 && <p>No movies found</p>}
+      {loader&&<Loader />}
     </div>
   )
 }

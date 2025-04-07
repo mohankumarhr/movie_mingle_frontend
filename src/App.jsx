@@ -10,6 +10,10 @@ import EmailVerify from './Pages/EmailVerify'
 import ChangePassword from './Pages/ChangePassword'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
+import Community from './Pages/Community'
+import AddMovieToComm from './Pages/AddMovieToComm'
+import MovieDetails from './Pages/MovieDetails'
+import CommunityDetails from './Pages/CommunityDetails'
 
 function App() {
   return (
@@ -25,8 +29,12 @@ function App() {
         <Route path='/register' element={<SignIn />} />
         <Route path='/recomend' element={<AddMovie />} />
         <Route path='/profile' element={<Profile />}/>
+        <Route path='/community' element={<Community />}/>
         <Route path='/verifymail/:email/:username' element={<EmailVerify />}/>
         <Route path='/forgotpassword' element={<ChangePassword />}/>
+        <Route path='/addmovietocomm/:id' element={<AddMovieToComm />}/>
+        <Route path='/moviedetails/:commid/:id/:recomendeduser' element={<MovieDetails />}/>
+        <Route path='/communitydetails/:id/' element={<CommunityDetails />}/>
       </Routes>
       </BrowserRouter>
     </div>

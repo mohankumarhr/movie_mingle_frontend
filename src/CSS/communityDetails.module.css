@@ -1,0 +1,39 @@
+.commDetailWrapper{
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.membersList{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+ 
+}
+
+.membersName{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.deletorexit{
+    background: none;
+    border: none;
+    color: red;
+    cursor: pointer;
+    width: fit-content;
+    border: 1px solid red;
+    padding: 5px 10px;
+    margin-top: 20px;
+}
+
+.removeBtn{
+    background: none;
+    border: none;
+    text-decoration: underline;
+    color: #df8e1a;
+    cursor: pointer;
+}
+

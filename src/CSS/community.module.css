@@ -1,0 +1,111 @@
+.communityBody{
+   display: flex;
+}
+
+.CommunityCreateWind{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 3;
+}
+
+
+
+.CommunityCreateWrap{
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  gap: 10px;
+}
+
+.closeBtn{
+   cursor: pointer;
+   align-self: flex-end;
+}
+
+.CommunityCreateWrap input{
+   padding: 5px 10px;
+   outline: none;
+   font-size: 15px;
+   border: 1px solid #ccc;
+   width: 300px;
+}
+
+.CommunityCreateWrap button{
+   padding: 8px 25px;
+    background-color: #df8e1a;
+    border-radius: 50px;
+    color: white;
+    border: none;
+    margin: 10px;
+    cursor: pointer;
+    width: 100px;
+}
+
+.communitList{
+
+}
+.communityMovies{
+   width: 100%;
+   overflow-y: auto;
+   overflow-x: hidden;
+   position: relative;
+   height: 88vh;
+}
+.communityWrapper{
+   display: flex;
+   flex-direction: column;
+}
+
+.communityHeader{
+   padding: 5px 50px;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+}
+
+.commAddMovieBtn{
+   padding: 8px 25px;
+   border-color: #df8e1a;
+   border-radius: 50px;
+   color: #df8e1a;
+   margin: 10px;
+   cursor: pointer;
+   background-color: white;
+   box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+
+.MovieListContainer{
+   margin: 50px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   flex-wrap: wrap;
+   gap: 20px;
+}
+
+.movieNotAdded{
+   padding-left: 50px;
+}
+
+.welcomeToComm{
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   height: 100%;
+}
+
+.welcomeToComm h4{
+   font-size: 25px;
+}

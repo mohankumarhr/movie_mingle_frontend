@@ -1,0 +1,100 @@
+.communityListCont{
+    background-color: #f2e3ce;
+    height: 88vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    position: relative;
+    transition: all 0.1s ease-in-out;
+    border-radius: 0 20px 0 20px;
+    z-index: 2;
+}
+
+
+.showList{
+    width: 400px;
+}
+
+.collapseList{
+    width: 20px;
+}
+
+.listHandleBtn{
+    background-color: white;
+    border-radius: 50% 0  0 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    right: -5%;
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.rotate{
+    rotate: 180deg;
+}
+
+.listWrapper{
+    visibility: hidden;
+}
+
+.createCommbtn{
+    padding: 8px 25px;
+    background-color: #df8e1a;
+    border-radius: 50px;
+    color: white;
+    border: none;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.communityMenu{
+    display: flex;
+    flex-direction: column;
+}
+
+.communityListHead{
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.communityListHead p{
+    font-weight: bold;
+}
+
+.communityListBody{
+    padding: 30px 10px 10px 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.communityNameBtn{
+    border: 1px solid #df8e1a;
+    padding: 10px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: #df8d1a85 -5px 5px, #df8d1a22 -20px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.commtitle{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.commtitle p {
+    font-size: 12px;
+}
+
+.launchIcon{
+    font-size: 18px !important;
+}

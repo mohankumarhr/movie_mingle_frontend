@@ -8,8 +8,8 @@ function IntroSection() {
     <div className={styles.introContainer}>
         <div className={styles.introWrapper}>
             <div className={styles.IntroLeftSection}>
-                <p>Disscover new movies &<br /> create your watchlist!</p>
-                <Link>Start browsing</Link>
+                <p>Discover Films Through<br />Friends, Not Just Feeds.</p>
+                <Link to={"/community"}>Explore Commmunities</Link>
             </div>
             <div className={styles.IntroRightSection}>
                 <img src={introImage} alt="img" />

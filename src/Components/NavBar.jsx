@@ -64,9 +64,10 @@ useEffect(()=>{
             <div  ref={menuRef} className={`${styles.navbarMenu} ${showMenu?styles.displayMenu:""}`}>
                 <ul>
                     <li><Link to={"/"}>Home</Link></li>
-                    <li><Link to={"/"}>Genres</Link></li>
                     <li><Link to={"/recomend"}>Recommend</Link></li>
                     {token&&<li><Link to={"/profile"}>Profile</Link></li>}
+                    <li><Link to={"/community"}>Community</Link></li>
+                    <li><Link to={"/"}>About</Link></li>
                 </ul>
             </div>
             {!token&&<div className={styles.navbarButtons}>

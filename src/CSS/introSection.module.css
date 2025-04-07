@@ -14,7 +14,7 @@
 .introWrapper .IntroLeftSection{
     display: flex;
     flex-direction: column;
-    gap: 80px;
+    gap: 30px;
 }
 
 .introWrapper .IntroLeftSection p{
@@ -25,11 +25,11 @@
 .introWrapper .IntroLeftSection a{
     background-color: #df8e1a;
     text-decoration: none;
-    font-size: 18px;
+    font-size: 15px;
     color: white;
-    padding: 10px 70px;
+    padding: 10px 30px;
     width: fit-content;
-    border-radius: 20px;
+    border-radius: 15px;
 }
 
 .introWrapper .IntroRightSection img{

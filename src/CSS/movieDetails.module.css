@@ -1,0 +1,55 @@
+.movieDetailsCont{
+    padding: 50px;
+    width: 100%;
+}
+
+.movieDetailsWrap{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.movieDetailsWrap>img{
+    width: 95vw;
+    height: 50vh;
+ }
+
+.detailsContainer{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 20px;
+}
+
+.rightCont{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: flex-start;
+    width: 100%;
+    height: 65vh;
+}
+
+.rightCont span{
+    font-weight: bolder;
+}
+
+.recomenderAction{
+    padding: 10px 0;
+}
+
+.recomenderAction button{
+    padding: 8px 25px;
+    background-color: #df8e1a;
+    border-radius: 50px;
+    color: white;
+    border: none;
+    margin: 10px;
+    cursor: pointer;
+}
+.recomenderAction span {
+    font-weight: bold;
+}
