@@ -67,7 +67,7 @@ useEffect(()=>{
                     <li><Link to={"/recomend"}>Recommend</Link></li>
                     {token&&<li><Link to={"/profile"}>Profile</Link></li>}
                     <li><Link to={"/community"}>Community</Link></li>
-                    <li><Link to={"/"}>About</Link></li>
+                    <li><Link to={"/about"}>About</Link></li>
                 </ul>
             </div>
             {!token&&<div className={styles.navbarButtons}>

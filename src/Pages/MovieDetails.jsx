@@ -18,6 +18,7 @@ const [username, setUsername] = useState("")
 const [loader, setLoader] = useState(false)
 const{commid, id, recomendeduser } = useParams();
 const [movieDetails, setmovieDetails] = useState({})
+const [owner , setOwner] = useState();
 
 const removeMovie = ()=>{
   axios.post(`${base_url}/community/removemovie`,null,
@@ -54,6 +55,24 @@ useEffect(()=>{
     fetchDta();
 })
     
+
+  useEffect(()  => {
+    axios.get(base_url+'/community/getdetails', {
+      params: {
+        communityId: commid
+      },
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    })
+    .then(response => {
+      console.log(response.data);
+      setOwner(response.data.owner.username);
+    })
+    .catch(error => {
+      console.error("There was an error fetching the community details!", error);
+    });
+  }, [commid, token]);
 
 useEffect(()=>{
   console.log(token)
@@ -104,7 +123,7 @@ useEffect(()=>{
             <div className={styles.recomenderAction}>
                 {recomendeduser !== username?<p> <span>Recomended by</span> {recomendeduser}</p>:
                 <button onClick={removeMovie}>remove</button>
-                }
+                }{recomendeduser !== username && owner === username && <button onClick={removeMovie}>Remove</button>}
             </div>
         </div>
         {loader&&<Loader />}

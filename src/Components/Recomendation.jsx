@@ -5,13 +5,18 @@ import axios from 'axios'
 import { base_url } from '../data'
 import { useNavigate } from 'react-router-dom'
 import NoMoviePoster from '../assets/images/NoMoviePoster.png'
+import Cookies from 'js-cookie';
+import { toast } from 'react-toastify';
 
 
 function Recomendation() {
 
   const navigate = useNavigate();
-
+  const [token] = useState(Cookies.get('token') || "")
+  const [username, setUsername] = useState("")
   const [movieDetails, setMovieDetails] = useState([])
+  const[triggerfeatchData, setTriggerFeatchdata] = useState(true);
+  
 
   useEffect(()=>{
     async function fetchData() {
@@ -21,7 +26,7 @@ function Recomendation() {
       .catch(error => console.error(error));
   }
   fetchData()
-  },[])
+  },[triggerfeatchData])
   
 
   // const moviedetails = [
@@ -39,6 +44,57 @@ function Recomendation() {
     navigate(`/moviedetails/0/${item.tmdb}/${item.username}`)  
   }
 
+  const handleLike = (item)=>{
+    console.log(item)
+    if (item["liked_users"].indexOf(username) === -1) {
+      axios.post(`${base_url}/likemovie`,null,
+        {
+              params: {
+              id : item.id,
+              username : username
+              },
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        }
+      ).then(response => {console.log(response);
+        setTriggerFeatchdata(!triggerfeatchData)
+      })
+      .catch(error => {console.error(error);
+        toast.error("something went wrong")
+      });
+    }else {
+      axios.post(`${base_url}/dislikemovie`,null,
+        {
+              params: {
+                id : item.id,
+                username : username
+          },
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        }
+      ).then(response => {console.log(response);
+        
+         setTriggerFeatchdata(!triggerfeatchData)
+      })
+      .catch(error => {console.error(error);
+        toast.error("something went wrong")
+      });
+    }
+    
+  }
+
+  useEffect(()=>{
+    console.log(token)
+    axios.get(base_url+'/getuser',{
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    })
+    .then(response => {setUsername(response.data.username);})
+    .catch(error => console.error(error));
+  },[token])
 
   return (
     <div className={styles.recomendContainer}>
@@ -49,6 +105,11 @@ function Recomendation() {
             title = {item.title}
             handleClick = {handleClick}
             details = {item}
+            handleLike = {handleLike}
+            liked = {
+              item["liked_users"].indexOf(username) !== -1
+           }
+           totallike = {item["liked_users"].length}
         />
            })}
         </div>

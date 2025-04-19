@@ -28,6 +28,8 @@ function Community() {
   const[movieresponce , setMovieResponce] = useState([]);
   const[commName, setCommName] = useState("");
   const[commId, setCommId] = useState("");
+  const[triggerfeatchData, setTriggerFeatchdata] = useState(true);
+
 
   // ****************************** for create window ******************************
 
@@ -119,8 +121,52 @@ const handleActiveCommunity = (id)=>{
 }
 
 const handleClick = (item)=>{
-    navigate(`/moviedetails/${communityActive}/${item.id}/${movieresponce[item.id]}`)
+    navigate(`/moviedetails/${communityActive}/${item.id}/${movieresponce[item.id]["added_by"]}`)
 }
+
+const handleLike = (item)=>{
+  console.log(item)
+  if (movieresponce[item.id]["linked_user"].indexOf(username) === -1) {
+    axios.post(`${base_url}/community/likemovie`,null,
+      {
+            params: {
+            communityId: communityActive,
+            movie_id: item.id,
+            username: username
+        },
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      }
+    ).then(response => {console.log(response);
+      setTriggerFeatchdata(!triggerfeatchData)
+    })
+    .catch(error => {console.error(error);
+      toast.error("something went wrong")
+    });
+  }else {
+    axios.post(`${base_url}/community/dislikemovie`,null,
+      {
+            params: {
+            communityId: communityActive,
+            movie_id: item.id,
+            username: username
+        },
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      }
+    ).then(response => {console.log(response);
+      
+       setTriggerFeatchdata(!triggerfeatchData)
+    })
+    .catch(error => {console.error(error);
+      toast.error("something went wrong")
+    });
+  }
+  
+}
+
 
 useEffect(()=>{
   console.log(token)
@@ -134,7 +180,10 @@ useEffect(()=>{
 },[token])
 
 
+
+
 useEffect(() => {
+  const scrollPosition = window.scrollY;
   async function fetchData() {
     setLoader(true)
     try {
@@ -144,12 +193,24 @@ useEffect(() => {
           Authorization: `Bearer ${token}`
         }
       });
+      console.log("unSorted Movies:", response.data.movies);
+      setMovieResponce(response.data.movies)
+      const sortedMovies = Object.entries(response.data.movies) // Convert object to array of [key, value] pairs
+      .sort(([, movieA], [, movieB]) => {
+        const aLikes = movieA.linked_user ? movieA.linked_user.length : 0; // Get length of linked_user array
+        const bLikes = movieB.linked_user ? movieB.linked_user.length : 0; // Get length of linked_user array
+        return bLikes - aLikes; // Sort by the number of likes (descending)
+      })
+      
+   
 
-      setCommuityDetails(response.data);
-      setMovieResponce(response.data.movies);
+    // Now you have the sorted movies object in sortedMovies
+    setCommuityDetails(response.data);
+    
+    console.log("Sorted Movies:", sortedMovies);
       setMoviesList([])
       // Extract movie IDs and fetch details for each one
-      const movieIds = Object.keys(response.data.movies);
+      const movieIds = sortedMovies.map(([movieId, movie]) => movieId);
       const movieRequests = movieIds.map(movieId => 
         axios.get(`https://api.themoviedb.org/3/movie/${movieId}?language=en-US`, {
           headers: {
@@ -167,7 +228,9 @@ useEffect(() => {
         [...prevMoviesList, ...movieDetails].forEach(movie => uniqueMovies.set(movie.id, movie));
         return Array.from(uniqueMovies.values()); // Convert back to array
       });
-      // console.log("Movie Details:", movieDetails); 
+    
+    
+      console.log("Movie Details:", movieDetails); 
       // console.log("movie List", moviesList)
       
     } catch (error) {
@@ -177,8 +240,13 @@ useEffect(() => {
     }
   }
 
-  fetchData();
-}, [communityActive, token]);
+  
+    fetchData();
+    
+    window.scrollTo(0, scrollPosition);
+   
+  
+}, [communityActive, token, triggerfeatchData]);
 
   if (!token) {
     return <Login />
@@ -223,7 +291,12 @@ useEffect(() => {
                           title = {item.title}
                           url = {item.poster_path != null? `https://image.tmdb.org/t/p/w300${item.poster_path}`:"https://image.tmdb.org/t/p/w300/43ZvmTzIJ0tTzgLG8sDOfg9roLF.jpg"}
                           handleClick = {handleClick}
+                          handleLike = {handleLike}
                           details = {item}
+                          liked = {
+                             movieresponce[item.id]["linked_user"].indexOf(username) !== -1
+                          }
+                          totallike = {movieresponce[item.id]["linked_user"].length}
                           />
                        })
                        }

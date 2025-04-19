@@ -14,6 +14,7 @@ import Community from './Pages/Community'
 import AddMovieToComm from './Pages/AddMovieToComm'
 import MovieDetails from './Pages/MovieDetails'
 import CommunityDetails from './Pages/CommunityDetails'
+import About from './Pages/About'
 
 function App() {
   return (
@@ -35,6 +36,8 @@ function App() {
         <Route path='/addmovietocomm/:id' element={<AddMovieToComm />}/>
         <Route path='/moviedetails/:commid/:id/:recomendeduser' element={<MovieDetails />}/>
         <Route path='/communitydetails/:id/' element={<CommunityDetails />}/>
+        <Route path='/about' element={<About />}/>
+
       </Routes>
       </BrowserRouter>
     </div>

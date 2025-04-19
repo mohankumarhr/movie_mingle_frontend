@@ -13,6 +13,29 @@
     border-radius: 10px;
 }
 
+.cardTitle{
+    display: flex;
+    justify-content: space-between;
+}
+
+.likeBtn{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 5px;
+    padding: 3px 5px;
+    cursor: pointer;
+}
+
+.heartIcon{
+    font-weight: 100;
+}
+
+.likedHeartIcon{
+    font-weight: 100;
+    color: red;
+}
+
 .moviecardWrapper .cardTitle p{
     font-size: 18px;
     font-weight: bold;
