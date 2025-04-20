@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom'
 import NoMoviePoster from '../assets/images/NoMoviePoster.png'
 import Cookies from 'js-cookie';
 import { toast } from 'react-toastify';
+import Loader from './Loader'
 
 
 function Recomendation() {
@@ -16,13 +17,22 @@ function Recomendation() {
   const [username, setUsername] = useState("")
   const [movieDetails, setMovieDetails] = useState([])
   const[triggerfeatchData, setTriggerFeatchdata] = useState(true);
-  
+  const [loader, setLoader] = useState(false)
+
 
   useEffect(()=>{
     async function fetchData() {
       axios
       .get(base_url+"/allmovies")
-      .then(responce => setMovieDetails(responce.data))
+      .then(responce => {
+        const sortedMovies = responce.data.sort(
+          (a, b) => b.liked_users.length - a.liked_users.length
+        );
+        setMovieDetails(sortedMovies);
+        console.log(sortedMovies);
+      }  
+
+    )
       .catch(error => console.error(error));
   }
   fetchData()
@@ -45,7 +55,11 @@ function Recomendation() {
   }
 
   const handleLike = (item)=>{
-    console.log(item)
+    // console.log(item)
+    if (username === "") {
+      return
+    }
+    setLoader(true)
     if (item["liked_users"].indexOf(username) === -1) {
       axios.post(`${base_url}/likemovie`,null,
         {
@@ -82,7 +96,7 @@ function Recomendation() {
         toast.error("something went wrong")
       });
     }
-    
+    setLoader(false)
   }
 
   useEffect(()=>{
@@ -113,6 +127,7 @@ function Recomendation() {
         />
            })}
         </div>
+        {loader&&<Loader />}
     </div>
   )
 }

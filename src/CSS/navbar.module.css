@@ -141,6 +141,7 @@
 
     .navbarWrapper .displayMenu{
         left: 0;
+        z-index: 3;
     }
 
     .navbarWrapper .navbarMenu ul{

@@ -125,7 +125,8 @@ const handleClick = (item)=>{
 }
 
 const handleLike = (item)=>{
-  console.log(item)
+  // console.log(item)
+  setLoader(true)
   if (movieresponce[item.id]["linked_user"].indexOf(username) === -1) {
     axios.post(`${base_url}/community/likemovie`,null,
       {
@@ -164,6 +165,7 @@ const handleLike = (item)=>{
       toast.error("something went wrong")
     });
   }
+  setLoader(false)
   
 }
 

@@ -65,7 +65,7 @@ function AddMovie() {
 
  
   const handleClick = (item)=>{
-
+    setLoader(true)
     const movieDetails = {
       tmdb_id: item.id,
       title: item.title,
@@ -83,9 +83,11 @@ function AddMovie() {
       }
     })
     .then(response =>{ console.log(response)
+      setLoader(false)
       toast.success("Movie added")
     })
     .catch(error => {console.error(error)
+      setLoader(false)
       toast.error("Movie already present")
     });
     

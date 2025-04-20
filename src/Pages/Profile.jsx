@@ -6,6 +6,7 @@ import Cookies from 'js-cookie'
 import { Link } from 'react-router-dom'
 import Login from './Login'
 import { base_url } from '../data'
+import Loader from '../Components/Loader'
 
 function Profile() {
 
@@ -17,6 +18,7 @@ function Profile() {
     })
     const [movieDetails, setMovieDetails] = useState([])
     const [editMode, setEditMode] = useState(true)
+    const [loader, setLoader] = useState(false)
 
 
     const enableEdit = ()=>{
@@ -33,7 +35,8 @@ function Profile() {
     }
 
     const saveDetails = ()=>{
-        console.log(userDetails)
+        // console.log(userDetails)
+        setLoader(true)
         axios.post(base_url+'/updateuser', userDetails,{
             headers: {
               Authorization: `Bearer ${token}`
@@ -41,10 +44,12 @@ function Profile() {
           })
         .then(responce => console.log(responce.data))
         .catch(error => console.log(error))
+        .finally(setLoader(false))
     }
 
     const handleDelete = (id)=>{
-        console.log(id)
+        // console.log(id)
+        setLoader(true)
         axios.delete(base_url+'/delete',
         {
             headers: {
@@ -55,23 +60,29 @@ function Profile() {
             }
         })
         .then((responce)=>{
-                console.log(responce.data)
+                // console.log(responce.data)
+                setLoader(false)
                 window.location.reload();
         })
-        .catch(error => console.error(error))
+        .catch(error => {console.error(error);
+          setLoader(false)
+        })
     }
 
     useEffect(()=>{
+      setLoader(true)
         axios.get(base_url+'/getuser',{
           headers: {
             Authorization: `Bearer ${token}`
           }
         })
         .then(response => (setUserDetails(response.data)))
-        .catch(error => console.error(error));
+        .catch(error => console.error(error))
+        .finally(setLoader(false));
     },[token])
 
     useEffect(()=>{
+        setLoader(true)
         axios.get(base_url+'/moviebyuser',{
           headers: {
             Authorization: `Bearer ${token}`
@@ -81,12 +92,17 @@ function Profile() {
           }
         })
         .then(response => (setMovieDetails(response.data)))
-        .catch(error => console.error(error));
+        .catch(error => console.error(error))
+        .finally(setLoader(false));
     },[token, userDetails])
 
   if (!token) {
     return <Login />
   }  
+
+  if (userDetails.username === "") {
+    return <Loader />
+  }
 
   return (
     <div className={styles.profileContainer}>
@@ -126,7 +142,9 @@ function Profile() {
                 </tr>
             </tbody>
             </table>
+           
         </div>
+        {loader&&<Loader />}
     </div>
   )
 }

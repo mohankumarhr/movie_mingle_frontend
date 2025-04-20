@@ -8,9 +8,12 @@ import Cookies from 'js-cookie';
 import axios from 'axios';
 import { base_url } from '../data';
 import { useNavigate } from 'react-router-dom';
+import Loader from './Loader';
 
 function CommunityList(props) {
 
+  const [loader, setLoader] = useState(false)
+  
   const [token] = useState(Cookies.get('token') || "")
   const [username, setUsername] = useState("")
   const [userId, setUserId] = useState("");
@@ -41,6 +44,7 @@ function CommunityList(props) {
         },[token])
   
   useEffect(()=>{
+    setLoader(true)
     async function fetchData() {
       axios
       .get(base_url+`/community/ownedcommunities?name=${username}`, {
@@ -49,12 +53,14 @@ function CommunityList(props) {
         }
       })
       .then(responce => setOwnedCommunityList(responce.data))
-      .catch(error => console.error(error));
+      .catch(error => console.error(error))
+      .finally( setLoader(false) );
   }
   fetchData()
   }, [username, token])
 
   useEffect(()=>{
+    setLoader(true)
     async function fetchData() {
       axios
       .get(base_url+`/community/communities?id=${userId}`, {
@@ -63,7 +69,8 @@ function CommunityList(props) {
         }
       })
       .then(responce => setMenberedCommunities(responce.data))
-      .catch(error => console.error(error));
+      .catch(error => console.error(error))
+      .finally( setLoader(false));
   }
   fetchData()
   },[userId, token])
@@ -104,6 +111,7 @@ function CommunityList(props) {
       <div  className={`${styles.listHandleBtn} ${!handleListView&&styles.rotate}`} onClick={handleList}> 
         <ArrowBackIosIcon />
        </div> 
+        {loader&&<Loader />}
     </div>
   )
 }

@@ -121,6 +121,7 @@
     display: flex;
     gap: 30px;
     margin: 0 15%;
+    text-align: justify;
   }
 
   .meetDevImage{
@@ -140,6 +141,7 @@
 
   .contactMeWrapper{
       display: flex;
+      flex-wrap: wrap;
       align-items: center;
       justify-content: center;
       gap: 300px
@@ -221,10 +223,80 @@
   border: none;
 }
 
+.contactForm button:hover{
+  background-color: #df8d1ad5;
+}
+
 .AboutFooter{
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 3px;
   background-color: rgba(243, 239, 239, 0.945);
+}
+
+
+@media (max-width: 768px){
+  
+
+  .aboutContainer h3{
+    font-size: 25px;
+    border-bottom: 5px solid #df8e1a;
+    margin: auto;
+}
+
+.aboutImage img{
+  width: 350px;
+  margin-right: 0;
+}
+
+.aboutDescWrapper{
+  padding: 10px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+  .aboutDesctext{
+    left: 0;
+    top: 20px;
+  }
+
+  .aboutTitle{
+    font-size: 18px;
+  }
+
+  .aboutDesctext p{
+    font-size: 12px;
+  }
+
+  .aboutDesctext h2{
+    font-size: 18px;
+  }
+
+  .teckStackSection{
+    margin: 10px;
+  }
+
+  .techItem{
+    padding: 10px 15px;
+  }
+
+  .techItem h4{
+    font-size: 15px;
+  }
+
+  .techItem p{
+    font-size: 12px;
+  }
+
+  .aboutDev{
+    flex-wrap: wrap;
+  }
+  .aboutDev p{
+    font-size: 12px;
+  }
+  
+  .contactMeWrapper{
+    gap: 20px;
+  }
+
 }

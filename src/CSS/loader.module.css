@@ -1,12 +1,12 @@
 .loaderContainer{
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     background-color: #ccc;
     opacity: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     z-index: 2;

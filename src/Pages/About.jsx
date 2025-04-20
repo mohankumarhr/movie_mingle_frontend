@@ -11,6 +11,7 @@ import XIcon from '@mui/icons-material/X';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import { Link } from 'react-router-dom'
 import axios from 'axios'
+import { toast } from 'react-toastify'
 
 function About() {
 
@@ -22,16 +23,25 @@ function About() {
 
 
   const handleSubmit = async (e) => {
+   
     const scriptURL = "https://script.google.com/macros/s/AKfycbwwfU3Gl2ni1qgqTrtZFVwx5eaU7nF0cVxiRVUFsdnoBxmb81VU-W7PHsI8KhVijxKC6A/exec"
     try {
-      await axios.post(scriptURL, form, {
+      console.log(form)
+      await axios.get( scriptURL, {
+        params: {
+          name: form.name,
+          email: form.email,
+          message: form.message,
+        },
         headers: {
           'Content-Type': 'application/json',
         },
       });
+      toast.success("Message sent!")
       setForm({ name: '', email: '', message: '' });
     } catch (error) {
       console.error('Error!', error);
+      toast.error("Could't send message")
     }
   };
 

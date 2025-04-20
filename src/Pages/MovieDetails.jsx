@@ -21,6 +21,7 @@ const [movieDetails, setmovieDetails] = useState({})
 const [owner , setOwner] = useState();
 
 const removeMovie = ()=>{
+  setLoader(true)
   axios.post(`${base_url}/community/removemovie`,null,
     {
           params: {
@@ -31,10 +32,12 @@ const removeMovie = ()=>{
         Authorization: `Bearer ${token}`
       }
     }
-  ).then(response => {console.log(response);
+  ).then(response => {
+    setLoader(false)
     navigate("/community")
   })
   .catch(error => {console.error(error);
+    setLoader(false)
     toast.error("couldn't remove movie")
   });
 }
@@ -121,8 +124,8 @@ useEffect(()=>{
                 </div>
             </div>
             <div className={styles.recomenderAction}>
-                {recomendeduser !== username?<p> <span>Recomended by</span> {recomendeduser}</p>:
-                <button onClick={removeMovie}>remove</button>
+                {recomendeduser !== username ?<p> <span>Recomended by</span> {recomendeduser}</p>:
+                commid !== "0" && <button onClick={removeMovie}>remove</button>
                 }{recomendeduser !== username && owner === username && <button onClick={removeMovie}>Remove</button>}
             </div>
         </div>

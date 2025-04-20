@@ -69,7 +69,7 @@ function AddMovieToComm() {
     
      
       const handleClick = (item)=>{
-    
+        setLoader(true)
         axios.post(base_url+'/community/addmovietoCommunity',null,{
           headers: {
             Authorization: `Bearer ${token}`
@@ -81,9 +81,11 @@ function AddMovieToComm() {
           }
         })
         .then(response =>{ console.log(response)
+          setLoader(false)
           toast.success("Movie added")
         })
         .catch(error => {console.error(error)
+          setLoader(false)
           toast.error("Movie already present")
         });
         

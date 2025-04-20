@@ -19,7 +19,7 @@
 .detailsContainer{
     width: 100%;
     display: flex;
-    align-items: center;
+
     justify-content: flex-start;
     gap: 20px;
 }
@@ -52,4 +52,31 @@
 }
 .recomenderAction span {
     font-weight: bold;
+}
+
+@media (max-width: 768px){
+    
+    .movieDetailsCont{
+        padding: 10px;
+    }
+
+    .detailsContainer{
+        display: block; /* Remove flex on small screens */
+    }
+
+    .detailsContainer img{
+        width: 50vw;
+        height: auto;
+        float: left;
+        margin-right: 15px;
+        margin-bottom: 10px;
+    }
+
+    .rightCont{
+        height: auto; 
+    }
+
+    .rightCont p{
+        font-size: 12px;
+    }
 }

@@ -7,24 +7,13 @@ import BackgroundLetterAvatars from './Avathar'
 import MenuIcon from '@mui/icons-material/Menu';
 import { base_url } from '../data'
 
+
 function NavBar() {
 
 const [showMenu, setMenu] = useState(false)
 const [token] = useState(Cookies.get('token') || null)
 const [username, setUsername] = useState(null);
 const menuRef = useRef(null);
-
-useEffect(()=>{
-    console.log(token)
-    axios.get(base_url+'/getuser',{
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
-    })
-    .then(response => (setUsername(response.data.username)))
-    .catch(error => console.error(error));
-  },[token])
-
 
   useEffect(() => {
     document.addEventListener("mousedown", handleClickOutside);
@@ -51,6 +40,19 @@ useEffect(()=>{
   const menutoggle = ()=>{
     setMenu(true)
   }
+
+  useEffect(()=>{
+    console.log(token)
+    axios.get(base_url+'/getuser',{
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    })
+    .then(response => (setUsername(response.data.username)))
+    .catch(error => {console.error(error)
+     
+    });
+  },[token])
 
   return (
     <div className={styles.navbarContainer}>
