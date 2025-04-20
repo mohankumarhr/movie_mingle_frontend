@@ -46,7 +46,7 @@ function RegisterForm() {
                 <h3>Sign In</h3>
                 <label>UserName</label>
                 <input type="text" onChange={handleChange} name='username' value={RegisterDetails.username}></input>
-                <label >Pasword</label>
+                <label >Password</label>
                 <input type="password" onChange={handleChange} name='password' value={RegisterDetails.password}/>
                 <label >Email</label>
                 <input type="email" onChange={handleChange} placeholder='example@gmail.com' name='email' value={RegisterDetails.email}/>

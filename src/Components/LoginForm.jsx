@@ -66,7 +66,7 @@ function LoginForm() {
                 <h3>Login</h3>
                 <label>UserName</label>
                 <input type="text" onChange={handleChange} name='username' value={LoginDetails.username}></input>
-                <label >Pasword</label>
+                <label >Password</label>
                 <input type="password" onChange={handleChange} name='password' value={LoginDetails.password}/>
                 <Link to={"/forgotpassword"}>Forgot Password</Link>
                 <button className={styles.loginBtn} onClick={handleLogin}>Login</button>
