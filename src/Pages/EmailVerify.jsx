@@ -31,8 +31,9 @@ function EmailVerify() {
   return (
     <div className={styles.emailVerifyContainer}>
         <div className={styles.emailVerifyWrapper}>
-            <p>Verification email has send to {email}</p>
+            <p>Verification email has send to {email} check spam folder</p>
             <Link onClick={resendVerification}>Resend mail</Link>
+            <p>After verification go back to login page and login</p>
         </div>
         {loader&&<Loader />}
     </div>
